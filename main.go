@@ -2,6 +2,7 @@ package main
 
 import (
 	"bufio"
+	"flag"
 	"log"
 	"net/http"
 	"os"
@@ -9,9 +10,15 @@ import (
 	"github.com/fatih/color"
 )
 
-func readSites() ([]string, error) {
+/*
+readSites reads a file containing a list of sites
+and returns the list as a slice of strings.
+
+It takes a file name as a string parameter
+*/
+func readSites(fileName string) ([]string, error) {
 	var sites []string
-	file, err := os.Open("./sites.txt")
+	file, err := os.Open(fileName)
 	if err != nil {
 		return sites, err
 	}
@@ -26,10 +33,14 @@ func readSites() ([]string, error) {
 }
 
 func main() {
+	var filePath string
 	err_msg := color.New(color.Bold, color.FgRed)
 	success := color.New(color.Bold, color.FgGreen)
 
-	sites_to_check, err := readSites()
+	flag.StringVar(&filePath, "f", "./site.txt", "The file location (full or relative path)\nExample: ~/Desktop/some_file.txt")
+	flag.Parse()
+
+	sites_to_check, err := readSites(filePath)
 	if err != nil {
 		err_msg.Println("Could not open file", err)
 		os.Exit(1)
