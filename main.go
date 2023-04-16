@@ -37,7 +37,7 @@ func main() {
 	err_msg := color.New(color.Bold, color.FgRed)
 	success := color.New(color.Bold, color.FgGreen)
 
-	flag.StringVar(&filePath, "f", "./site.txt", "The file location (full or relative path)\nExample: ~/Desktop/some_file.txt")
+	flag.StringVar(&filePath, "f", "./sites.txt", "The file location (full or relative path)\nExample: ~/Desktop/some_file.txt")
 	flag.Parse()
 
 	sites_to_check, err := readSites(filePath)
