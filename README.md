@@ -2,7 +2,7 @@
 
 > check if a site is offline or online
 
-**WHY** Because *why not*
+**WHY? why not**
 
 Installation and Usage
 ---
@@ -14,7 +14,7 @@ cd site_status
 
 go build . -o status_go
 
-./status_go -f<path_to_file_containing_sites>
+./status_go -f <path_to_file_containing_sites>
 
 ---
 help
@@ -29,4 +29,5 @@ Usage of ./status_go:
 
 It does support both absolute paths or relative paths.
 
+![demo gif](./examples/demo.gif)
 **License** -> [MIT](./License)
