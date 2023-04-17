@@ -33,9 +33,11 @@ func readSites(fileName string) ([]string, error) {
 }
 
 func main() {
-	var filePath string
-	err_msg := color.New(color.Bold, color.FgRed)
-	success := color.New(color.Bold, color.FgGreen)
+	var (
+		filePath string
+		err_msg  = color.New(color.Bold, color.FgRed)
+		success  = color.New(color.Bold, color.FgGreen)
+	)
 
 	flag.StringVar(&filePath, "f", "./sites.txt", "The file location (full or relative path)\nExample: ~/Desktop/some_file.txt")
 	flag.Parse()
