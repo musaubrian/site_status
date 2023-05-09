@@ -34,9 +34,10 @@ func readSites(fileName string) ([]string, error) {
 
 func main() {
 	var (
-		filePath string
-		err_msg  = color.New(color.Bold, color.FgRed)
-		success  = color.New(color.Bold, color.FgGreen)
+		filePath  string
+		err_msg   = color.New(color.Bold, color.FgRed)
+		success   = color.New(color.Bold, color.FgGreen)
+		just_bold = color.New(color.Bold)
 	)
 
 	flag.StringVar(&filePath, "f", "./sites.txt", "The file location (full or relative path)\nExample: ~/Desktop/some_file.txt")
@@ -50,6 +51,11 @@ func main() {
 
 	if len(sites_to_check) < 1 {
 		err_msg.Println("No sites found, try adding some")
+	}
+	if len(sites_to_check) == 1 {
+        just_bold.Println("--------------")
+		just_bold.Print("we are using the default file list\nUse --help to see how to do this\n")
+        just_bold.Println("--------------")
 	}
 
 	for _, site := range sites_to_check {
